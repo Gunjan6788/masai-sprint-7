@@ -95,6 +95,11 @@ export const billSuccess = payload => ({
 })
 
 export const generateBill = payload => dispatch => {
-    axios.post(`http://127.0.0.1:5000/bill/${payload}`)
-        .then(res => console.log(res))
+    console.log(payload)
+
+    axios.post('http://127.0.0.1:5000/bill', {
+        user: payload
+    })
+        .then(res => res.data)
+        .then(res => dispatch(billSuccess(res)))
 }

@@ -2,9 +2,9 @@ import {
     ADD_ITEM_SUCCESS,
     SHOW_ITEM_SUCCESS,
     EDIT_ITEM_SUCCESS,
-    GET_ITEM
+    GET_ITEM,
+    BILL_SUCCESS
 } from './actionTypes'
-import { editItemSuccess } from './actions'
 
 export const initState = {
     add: [],
@@ -39,7 +39,14 @@ export default (state = initState, { type, payload }) => {
                 ...state,
                 msg:payload
             }
-
+        
+        case BILL_SUCCESS:
+            const item = payload.data 
+            return{
+                ...state,
+                add:item,
+                data:payload,
+            }
         default:
             return state
     }

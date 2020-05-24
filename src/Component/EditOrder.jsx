@@ -96,13 +96,13 @@ class EditOrder extends Component {
                                     onChange={this.handleChange}
                                 >
                                     <option >Choose day</option>
-                                    <option value="monday">Monday</option>
-                                    <option value="tuesday">Tuesday</option>
-                                    <option value="wednesday">Wednesday</option>
-                                    <option value="thursday">Thursday</option>
-                                    <option value="friday">Friday</option>
-                                    <option value="saturday">Saturday</option>
-                                    <option value="sunday">Sunday</option>
+                                    <option value="Mon">Monday</option>
+                                    <option value="Tues">Tuesday</option>
+                                    <option value="Wed">Wednesday</option>
+                                    <option value="Thurs">Thursday</option>
+                                    <option value="Fri">Friday</option>
+                                    <option value="Sat">Saturday</option>
+                                    <option value="Sun">Sunday</option>
 
                                 </select>
                             </div>

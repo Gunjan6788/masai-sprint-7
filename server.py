@@ -3,6 +3,8 @@ import csv
 from flask import Flask
 from flask import request
 from flask_cors import CORS
+import time
+import math
 
 app = Flask(__name__)
 
@@ -132,8 +134,37 @@ def delete(id):
 
 
 ######### Bill Generate #########
-@app.route('/bill/<id>',methods=['POST'])
-def generate_bill(id):
+@app.route('/bill', methods=['POST'])
+def generate_bill():
+    locatime = time.asctime( time.localtime(time.time()))
+    locatime = locatime.split(' ')
+
+    user = request.json['user']
+
+    data = []
+
     with open('data.csv','r') as file_reader:
         reader = csv.DictReader(file_reader)
-        
+
+        for row in reader:
+            if row['name']==user and row['day']==locatime[0]:
+                data.append(row)
+                
+    amount=0
+    day = ''
+    for row in data:
+        day = row['day']
+        amount += int(row['price']) * int(row['quantity'])
+    
+
+    tax = int(amount * 5/100) 
+    serice_charge = int(amount * 10/100)
+    if day=='Mon' or day=='Sun':
+        discount = int(amount * 10/100)
+        total = amount + tax + serice_charge - discount
+    else:
+        total = int(amount + tax + serice_charge)
+    
+    return json.dumps({"data":data,"tax":tax,"amount":amount,"service_charge":serice_charge,"discount":discount,"total":total})
+
+            

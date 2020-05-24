@@ -1,6 +1,5 @@
 id,name,item,price,quantity,day
-1,Gunjan Mahajan,afc,45,1,tuesday
-2,Gunjan Mahajan,bread,30,2,monday
-3,Gunjan,coffee,100,2,wednesday
-4,Gunjan,tea,70,2,friday
-5,Gunjan,pasta,300,1,friday
+1,Gunjan Mahajan,afc,45,1,Tues
+2,Gunjan Mahajan,bread,30,2,Mon
+3,Gunjan,tea,50,2,Sun
+4,Gunjan,dosa,200,2,Sun

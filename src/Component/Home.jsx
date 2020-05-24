@@ -29,6 +29,7 @@ class AddOrder extends Component {
         return (
             <>
                 <div className="container">
+                    <h3 className="text-center m-3">Billing System</h3>
                     <h3 className="text-center m-3">Enter Item</h3>
 
                     <div className="border row offset-3 col-md-6 p-3 bg-dark text-light">
@@ -69,13 +70,13 @@ class AddOrder extends Component {
                                     onChange={this.handleChange}
                                 >
                                     <option >Choose day</option>
-                                    <option value="monday">Monday</option>
-                                    <option value="tuesday">Tuesday</option>
-                                    <option value="wednesday">Wednesday</option>
-                                    <option value="thursday">Thursday</option>
-                                    <option value="friday">Friday</option>
-                                    <option value="saturday">Saturday</option>
-                                    <option value="sunday">Sunday</option>
+                                    <option value="Mon">Monday</option>
+                                    <option value="Tues">Tuesday</option>
+                                    <option value="Wed">Wednesday</option>
+                                    <option value="Thurs">Thursday</option>
+                                    <option value="Fri">Friday</option>
+                                    <option value="Sat">Saturday</option>
+                                    <option value="Sun">Sunday</option>
 
                                 </select>
                             </div>

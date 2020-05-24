@@ -1,19 +1,86 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { generateBill } from '../Redux/actions'
+import uuidv4 from 'uuid'
 
 class Bill extends Component {
 
     componentDidMount = () => {
-        const { match, generateBill} = this.props
+        const { match, generateBill } = this.props
         console.log(match)
-        generateBill(match.params)
+        generateBill(match.params.id)
     }
 
     render() {
+        const { data, match } = this.props
+        console.log(data.data)
         return (
-            <>
-            </>
+            <div className='container pt-5'>
+                <div className='row pt-5 mt-5'>
+                    <div className='col-5 offset-3'>
+                        <div className="card shadow p-3 mb-5 bg-white rounded" >
+                            <h5 className="card-title p-3">{match.params.id}</h5>
+                            <table className="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">price</th>
+                                        <th scope="col">quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        data.data === undefined ?
+                                            <h4>user not defined</h4> :
+                                            data.data.map(ele =>
+
+                                                <tr key={uuidv4()}>
+                                                    <td>{ele.item}</td>
+                                                    <td>{ele.price}</td>
+                                                    <td>{ele.quantity}</td>
+                                                </tr>
+                                            )
+                                    }
+                                    <tr>
+                                        <td>Tax</td>
+                                        <td>{data.tax}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Service Charge</td>
+                                        <td>{data.service_charge}</td>
+                                        <td></td>
+                                    </tr>
+                                    {
+                                        data.discount === 0 ?
+                                            <tr>
+                                                <td>Discount</td>
+                                                <td>{data.discount}</td>
+                                                <td>no discount</td>
+                                            </tr> 
+                                            :
+                                            <tr>
+                                                <td>Discount</td>
+                                                <td>{data.discount}</td>
+                                                <td>10% discount</td>
+                                            </tr>
+                                    }
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>{data.total}</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
