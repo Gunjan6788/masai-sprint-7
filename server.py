@@ -156,7 +156,7 @@ def generate_bill():
         day = row['day']
         amount += int(row['price']) * int(row['quantity'])
     
-
+    discount = 0
     tax = int(amount * 5/100) 
     serice_charge = int(amount * 10/100)
     if day=='Mon' or day=='Sun':
@@ -166,5 +166,3 @@ def generate_bill():
         total = int(amount + tax + serice_charge)
     
     return json.dumps({"data":data,"tax":tax,"amount":amount,"service_charge":serice_charge,"discount":discount,"total":total})
-
-            

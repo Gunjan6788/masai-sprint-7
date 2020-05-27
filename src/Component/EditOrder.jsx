@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { itemDetails, editItem } from '../Redux/actions'
+import { itemDetails,showItems, editItem } from '../Redux/actions'
 
 class EditOrder extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class EditOrder extends Component {
 
     handleClick = (e) => {
         e.preventDefault()
-        const { add, editItem, history, match } = this.props
+        const { add, editItem, history, match, showItems} = this.props
         editItem({
             id: add.id,
             name: this.state.name,
@@ -37,14 +37,14 @@ class EditOrder extends Component {
             quantity: this.state.quantity,
             day: this.state.day
         })
-        itemDetails(match.params.id)
+        showItems(this.state.name)
 
         history.goBack()
     }
 
     render() {
-        const { add, msg } = this.props
-        console.log(msg)
+        const { add} = this.props
+
         return (
             <>
                 <div className="container"
@@ -111,10 +111,9 @@ class EditOrder extends Component {
                         <button className="btn btn-info ml-5 mt-3"
                             onClick={this.handleClick}
                         >
-                            Add Details
+                            Update
                         </button>
                     </div>
-                    <p className="text-center lead m-3">{msg}</p>
                 </div>
             </>
         )
@@ -123,12 +122,12 @@ class EditOrder extends Component {
 
 const mapStateToProps = state => ({
     add: state.add,
-    msg: state.msg
 });
 
 const mapDispatchToProps = dispatch => ({
-    itemDetails: payload => dispatch(itemDetails(payload)),
-    editItem: payload => dispatch(editItem(payload))
+    showItems: payload => dispatch(showItems(payload)),
+    editItem: payload => dispatch(editItem(payload)),
+    itemDetails: payload => dispatch(itemDetails(payload))
 });
 
 export default connect(

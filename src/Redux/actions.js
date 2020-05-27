@@ -51,7 +51,7 @@ export const getItem = payload => ({
 })
 
 export const itemDetails = payload => dispatch => {
-
+    console.log(payload)
     axios.get(`http://127.0.0.1:5000/edit/${payload}`)
         .then(res => res.data)
         .then(res => dispatch(getItem(res)))

@@ -12,8 +12,8 @@ class Bill extends Component {
     }
 
     render() {
-        const { data, match } = this.props
-        console.log(data.data)
+        const { bill_data, match } = this.props
+        console.log(bill_data.data)
         return (
             <div className='container pt-5'>
                 <div className='row pt-5 mt-5'>
@@ -29,10 +29,11 @@ class Bill extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {console.log(bill_data.data)}
                                     {
-                                        data.data === undefined ?
+                                        bill_data.data === undefined ?
                                             <h4>user not defined</h4> :
-                                            data.data.map(ele =>
+                                            bill_data.data.map(ele =>
 
                                                 <tr key={uuidv4()}>
                                                     <td>{ele.item}</td>
@@ -43,25 +44,25 @@ class Bill extends Component {
                                     }
                                     <tr>
                                         <td>Tax</td>
-                                        <td>{data.tax}</td>
+                                        <td>{bill_data.tax}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Service Charge</td>
-                                        <td>{data.service_charge}</td>
+                                        <td>{bill_data.service_charge}</td>
                                         <td></td>
                                     </tr>
                                     {
-                                        data.discount === 0 ?
+                                        bill_data.discount === 0 ?
                                             <tr>
                                                 <td>Discount</td>
-                                                <td>{data.discount}</td>
+                                                <td>{bill_data.discount}</td>
                                                 <td>no discount</td>
                                             </tr> 
                                             :
                                             <tr>
                                                 <td>Discount</td>
-                                                <td>{data.discount}</td>
+                                                <td>{bill_data.discount}</td>
                                                 <td>10% discount</td>
                                             </tr>
                                     }
@@ -72,7 +73,7 @@ class Bill extends Component {
                                     </tr>
                                     <tr>
                                         <td>Total</td>
-                                        <td>{data.total}</td>
+                                        <td>{bill_data.total}</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -87,7 +88,7 @@ class Bill extends Component {
 
 const mapStateToProps = state => ({
     isLoading: state.isLoading,
-    data: state.data,
+    bill_data: state.bill_data,
     isError: state.isError
 
 })

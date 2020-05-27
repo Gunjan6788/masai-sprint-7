@@ -29,10 +29,9 @@ class AddOrder extends Component {
         return (
             <>
                 <div className="container">
-                    <h3 className="text-center m-3">Billing System</h3>
                     <h3 className="text-center m-3">Enter Item</h3>
 
-                    <div className="border row offset-3 col-md-6 p-3 bg-dark text-light">
+                    <div className="border row offset-3 col-md-6 p-3 bg-dark text-light rounded">
                         <div className='col-12'>
                             <div className="form-group col-12">
                                 <label>Name</label>

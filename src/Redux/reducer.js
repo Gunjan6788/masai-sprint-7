@@ -9,7 +9,7 @@ import {
 export const initState = {
     add: [],
     data: [],
-    msg:''
+    bill_data:[],
 }
 
 export default (state = initState, { type, payload }) => {
@@ -35,17 +35,11 @@ export default (state = initState, { type, payload }) => {
 
         case EDIT_ITEM_SUCCESS:
             alert(payload.message)
-            return{
-                ...state,
-                msg:payload
-            }
         
         case BILL_SUCCESS:
-            const item = payload.data 
             return{
                 ...state,
-                add:item,
-                data:payload,
+                bill_data:payload,
             }
         default:
             return state
